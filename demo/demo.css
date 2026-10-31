@@ -1,0 +1,65 @@
+.demo-toolbar {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px max(20px, calc((100vw - 1280px) / 2));
+  background: #fff7db;
+  color: #29271f;
+  border-bottom: 1px solid #d9c37f;
+  font:
+    13px/1.5 system-ui,
+    sans-serif;
+}
+.demo-toolbar strong {
+  font-weight: 750;
+  font-size: 13px;
+}
+.demo-toolbar p {
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: #5c5137;
+}
+.demo-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.demo-actions button,
+.demo-actions a {
+  padding: 7px 10px;
+  border: 1px solid #bdae7a;
+  border-radius: 4px;
+  background: transparent;
+  color: #29271f;
+  font:
+    600 12px/1.3 system-ui,
+    sans-serif;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.demo-actions button[aria-pressed="true"] {
+  background: #29271f;
+  color: #fff7db;
+  border-color: #29271f;
+}
+.demo-actions button:hover,
+.demo-actions a:hover {
+  outline: 2px solid #bdae7a;
+  outline-offset: 1px;
+}
+@media (max-width: 800px) {
+  .demo-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 18px;
+    gap: 9px;
+  }
+  .demo-actions {
+    gap: 6px;
+  }
+}

@@ -16,7 +16,9 @@
     "typecheck": "tsc --noEmit",
     "db:migrate:local": "node scripts/migrate-local.mjs",
     "dev:roles": "node scripts/dev-roles.mjs",
-    "test:integration": "node --test tests/api.test.mjs"
+    "test:integration": "node --test tests/api.test.mjs",
+    "demo:build": "vite build --config demo/vite.config.ts",
+    "demo:dev": "vite --config demo/vite.config.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",

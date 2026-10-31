@@ -4,6 +4,14 @@ Aplicação para importar um estoque por CSV, conferir erros por linha e gravar 
 
 ![Aplicação em funcionamento](docs/estoque-desktop.png)
 
+## Demonstração no GitHub Pages
+
+[Abrir demonstração interativa](https://mateusmarques2026.github.io/importador-estoque/)
+
+A demonstração usa as mesmas interfaces do projeto com um adaptador exclusivo em demo/. Os dados são fictícios, ficam no armazenamento local do navegador e podem ser reiniciados pelo botão no topo. A troca de visão simula os papéis para apresentação; não é autenticação nem controle de acesso real. Não use dados pessoais nesta demonstração. A versão completa com servidor, identidade e SQL permanece no restante do projeto.
+
+Para executar: npm ci, npm run demo:build e npm run demo:dev. O comando demo:build gera dist-demo/; o workflow pages.yml publica essa pasta. Em Settings → Pages, a origem é GitHub Actions.
+
 ## O problema
 
 Planilhas chegam com formatos diferentes, SKUs repetidos e valores inválidos. Gravar parte do arquivo deixa o estoque inconsistente; reenviar o mesmo lote pode duplicar dados. O projeto valida antes de confirmar e repete a validação no servidor durante a importação.
