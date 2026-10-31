@@ -1,0 +1,28 @@
+name: Verificar projeto
+on:
+  push:
+  pull_request:
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run typecheck
+      - run: npm run build
+      - run: npm run db:migrate:local
+      - name: Testar API com banco local
+        run: |
+          npm run dev:roles -- --port 5175 --hostname 127.0.0.1 > /tmp/agenda-preview.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
+          for i in $(seq 1 60); do
+            if curl -s http://127.0.0.1:5175/api/products > /dev/null; then break; fi
+            sleep 1
+          done
+          npm run test:integration
